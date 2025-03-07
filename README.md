@@ -1,2 +1,2 @@
 # Donem-Projesi-Esma-Zeynep-Avluklu
- baslangic
+ dönem projemin açıklama bölümü
