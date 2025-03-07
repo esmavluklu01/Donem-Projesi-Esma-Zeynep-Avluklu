@@ -1,5 +1,9 @@
+body{
+    background-color: #696969!important;
+
+}
 h1{
-    color: red;
+    color: red!important;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
