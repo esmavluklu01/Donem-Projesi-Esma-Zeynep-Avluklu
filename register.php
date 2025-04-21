@@ -14,32 +14,8 @@
 <body>
 
 
-   <div class="topbar">
-      <div class="wrapper target">
-         <div class="left">
-            <i class="fa-brands fa-square-x-twitter"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-pinterest"></i>
-         </div>
-         <div class="center">
-            <a href="/">HOME</a>
-            <a href="./about.html">ABOUT</a>
-            <a href="./register.html">REGISTER</a>
-            <a href="./login.html">LOGIN</a>
-            <a href="./add.html">ADD</a>
-         </div>
-         <div class="right">
-            <span>
-               <img src="../public/img/user/user-1.png" alt="user">
-            </span>
-            <div class="searchEngine" id="searchEngine">
-               <input type="text" placeholder="...">
-               <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
-            </div>
-         </div>
-      </div>
-   </div>
+  
+<?php include('./includes/header.php'); ?>
 
 
 
