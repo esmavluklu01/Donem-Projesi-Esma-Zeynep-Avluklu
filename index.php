@@ -23,7 +23,7 @@ $blogs = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH EDİP 
 
    <?php include('./includes/header.php'); ?>
    <header class="header target">
-      <img src="./public/img/background/face1.jpg" alt="background">
+      <img src="./public/img/background/indir (2).jpg" alt="background">
       <h1>fizyonomi</h1>
       <h3>el yüz çizgileri bize ne anlatıyor</h3>
    </header>

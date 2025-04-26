@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
 
    <?php include('./includes/header.php'); ?>
    <header class="header target">
-      <img src="./public/img/background/face1.jpg" alt="background">
+      <img src="./public/img/background/fizyonomi1.jpg" alt="background">
       <h1>fizyonomi</h1>
       <h3>el yüz çizgileri bize ne anlatıyor</h3>
    </header>
