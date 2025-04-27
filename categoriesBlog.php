@@ -2,12 +2,25 @@
 session_start();
 require_once './config/config.php';
 
-$degisken = $pdo->query("SELECT * FROM fizyonomi");  // TÜM ESERLERİ GETİRİYOR
-$fizyonomies = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH EDİP DEĞİŞKENE ATANIYOR
+$category_id = intval($_GET['id']); // Güvenlik için int'e çevirdik
+
+// Kategori bilgisi çekiliyor
+$category_stmt = $pdo->prepare("SELECT * FROM categories WHERE id = :id");
+$category_stmt->execute(['id' => $category_id]);
+$category = $category_stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$category) {
+    die("Kategori bulunamadı.");
+}
+
+// Bu kategoriye ait yayımlanmış yazılar çekiliyor
+$fizyonomi_stmt = $pdo->prepare("SELECT * FROM fizyonomi WHERE category_id = :id ORDER BY created_at DESC");
+$fizyonomi_stmt->execute(['id' => $category_id]);
+$posts = $fizyonomi_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
    <meta charset="UTF-8">
@@ -16,35 +29,37 @@ $fizyonomies = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <title>Document</title>
+   <title><?= htmlspecialchars($category['name']) ?> | Kategori</title>
 </head>
 
 <body>
 
    <?php include('./includes/header.php'); ?>
+
    <header class="header target">
       <img src="./public/img/background/indir (2).jpg" alt="background">
-      <h1>fizyonomi</h1>
-      <h3>el yüz çizgileri bize ne anlatıyor</h3>
+      <h1><?= htmlspecialchars($category['name']) ?> Kategorisi</h1>
    </header>
 
    <div class="home">
       <div class="wrapper">
          <div class="posts">
-         <?php foreach ($fizyonomies as $fizyonomi) : ?>
-            <?php if ($fizyonomi['isHome'] == 1 && $fizyonomi['isActive'] == 1) : ?>
+         <?php foreach ($posts as $post) : ?>
             <div class="post target">
-               <h1><a href="detailBlog.php?id=<?= $fizyonomi['id'] ?>"><?= $fizyonomi['title'] ?></a></h1>
-               <img src="<?= $fizyonomi['image'] ?>" class="content" alt="content">
+               <h1><a href="detailBlog.php?id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a></h1>
+               <img src="<?= htmlspecialchars($post['image']) ?>" class="content" alt="content">
                <p>
-                  <?= substr($fizyonomi['content'], 0, 100) . '...' ?>
+                  <?= htmlspecialchars(substr($post['content'], 0, 100)) . '...' ?>
                </p>
                <div class="authorAndDate">
-                  <!-- Author and date can be added here if needed -->
+                  <!-- İstersen burada yazar veya tarih bilgisi ekleyebilirsin -->
                </div>
             </div>
-            <?php endif; ?>
          <?php endforeach; ?>
+
+         <?php if (count($posts) === 0): ?>
+            <p>Bu kategoride henüz yazı bulunmamaktadır.</p>
+         <?php endif; ?>
          </div>
 
          <div class="sidebar">
@@ -62,7 +77,7 @@ $fizyonomies = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH 
             <div class="area target">
                <h3>Your Space</h3>
                <a href="/admin/add">Add Post</a>
-               <a href="#">Your Perfonce</a>
+               <a href="#">Your Performance</a>
                <a href="#">Number of Views</a>
             </div>
          </div>

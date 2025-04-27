@@ -2,30 +2,26 @@
 session_start();
 require_once './config/config.php';
 
-if (isset($_GET['id'])) {
-    $blog_id = $_GET['id'];
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $fizyonomi_id = intval($_GET['id']);
     
-    // Veritabanından ilgili blogu çekme
-    $degisken = $pdo->prepare("SELECT * FROM blogs WHERE id = :id");
-    $degisken->bindParam(':id', $blog_id, PDO::PARAM_INT);
-    $degisken->execute();
-    $blog = $degisken->fetch(PDO::FETCH_ASSOC);
+    $stmt = $pdo->prepare("SELECT * FROM fizyonomi WHERE id = :id AND isActive = 1");
+    $stmt->execute(['id' => $fizyonomi_id]);
+    $fizyonomi = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    if (!$blog) {
-        // Eğer blog bulunamazsa 404 sayfasına yönlendirme yapabilirsiniz.
+    if (!$fizyonomi) {
         header("HTTP/1.0 404 Not Found");
-        echo "Blog not found.";
+        echo "İçerik bulunamadı.";
         exit();
     }
 } else {
-    // ID yoksa yönlendirme yap
     header("Location: index.php");
     exit();
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
    <meta charset="UTF-8">
@@ -34,53 +30,64 @@ if (isset($_GET['id'])) {
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <title>Document</title>
+   <style>
+      .detail-container {
+         max-width: 900px;
+         margin: 40px auto;
+         padding: 20px;
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      .detail-title {
+         font-size: 32px;
+         margin-bottom: 20px;
+         text-align: center;
+         color: #333;
+      }
+      .detail-image {
+         width: 100%;
+         max-height: 500px;
+         object-fit: cover;
+         margin-bottom: 20px;
+         border-radius: 8px;
+      }
+      .detail-content {
+         font-size: 18px;
+         line-height: 1.8;
+         color: #555;
+         white-space: pre-line;
+      }
+      .author-date {
+         margin-top: 30px;
+         font-size: 14px;
+         color: #999;
+         text-align: center;
+      }
+   </style>
+   <title><?= htmlspecialchars($fizyonomi['title']) ?> | Detay</title>
 </head>
 
 <body>
 
    <?php include('./includes/header.php'); ?>
-   <header class="header target">
-      <img src="./public/img/background/fizyonomi1.jpg" alt="background">
-      <h1>fizyonomi</h1>
-      <h3>el yüz çizgileri bize ne anlatıyor</h3>
-   </header>
 
-   <div class="home">
-      <div class="wrapper">
-         <div class="posts">
-            <!-- Detaylı Blog Yazısı -->
-            <div class="post target">
-               <h1><?= $blog['title'] ?></h1>
-               <img src="<?= $blog['image'] ?>" class="content" alt="content">
-               <p>
-                  <?= $blog['description'] ?>
-               </p>
-               <div class="authorAndDate">
-                  <!-- Author and date can be added here if needed -->
-               </div>
-            </div>
-         </div>
+   <div class="detail-container">
+      <h1 class="detail-title"><?= htmlspecialchars($fizyonomi['title']) ?></h1>
+      
+      <?php if (!empty($fizyonomi['image'])): ?>
+         <img src="<?= htmlspecialchars($fizyonomi['image']) ?>" alt="<?= htmlspecialchars($fizyonomi['title']) ?>" class="detail-image">
+      <?php endif; ?>
+      
+      <div class="detail-content">
+         <?= nl2br(htmlspecialchars($fizyonomi['content'])) ?>
+      </div>
 
-         <div class="sidebar">
-            <div class="area target">
-               <h3>Who I Am</h3>
-               <img src="public/img/user/user-2.png" alt="user">
-               <div class="categories">
-                  <span>#art</span>
-                  <span>#design</span>
-                  <span>#paint</span>
-                  <span>#culture</span>
-               </div>
-            </div>
-
-            <div class="area target">
-               <h3>Your Space</h3>
-               <a href="/admin/add">Add Post</a>
-               <a href="#">Your Perfonce</a>
-               <a href="#">Number of Views</a>
-            </div>
-         </div>
+      <div class="author-date">
+         <?php if (!empty($fizyonomi['author'])): ?>
+            Yazar: <?= htmlspecialchars($fizyonomi['author']) ?> |
+         <?php endif; ?>
+         Yayın Tarihi: <?= date('d.m.Y', strtotime($fizyonomi['created_at'])) ?>
       </div>
    </div>
 

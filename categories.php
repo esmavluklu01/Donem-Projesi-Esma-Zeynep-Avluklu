@@ -2,8 +2,8 @@
 session_start();
 require_once './config/config.php';
 
-$degisken = $pdo->query("SELECT * FROM fizyonomi");  // TÜM ESERLERİ GETİRİYOR
-$fizyonomies = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH EDİP DEĞİŞKENE ATANIYOR
+$degisken = $pdo->query("SELECT * FROM categories");  // TÜM ESERLERİ GETİRİYOR
+$categories = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH EDİP DEĞİŞKENE ATANIYOR
 ?>
 
 <!DOCTYPE html>
@@ -24,20 +24,20 @@ $fizyonomies = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH 
    <?php include('./includes/header.php'); ?>
    <header class="header target">
       <img src="./public/img/background/indir (2).jpg" alt="background">
-      <h1>fizyonomi</h1>
-      <h3>el yüz çizgileri bize ne anlatıyor</h3>
+      <h1>Kategoriler</h1>
    </header>
 
    <div class="home">
       <div class="wrapper">
          <div class="posts">
-         <?php foreach ($fizyonomies as $fizyonomi) : ?>
-            <?php if ($fizyonomi['isHome'] == 1 && $fizyonomi['isActive'] == 1) : ?>
-            <div class="post target">
-               <h1><a href="detailBlog.php?id=<?= $fizyonomi['id'] ?>"><?= $fizyonomi['title'] ?></a></h1>
-               <img src="<?= $fizyonomi['image'] ?>" class="content" alt="content">
+         <?php foreach ($categories as $category) : ?>
+            <?php if ($category['isHome'] == 1 && $category['isActive'] == 1) : ?>
+                
+                <div class="post target">
+               <h1><a href="categoriesBlog.php?id=<?= $category['id'] ?>"><?= $category['name'] ?></a></h1>
+               <img src="<?= $category['image'] ?>" class="content" alt="content">
                <p>
-                  <?= substr($fizyonomi['content'], 0, 100) . '...' ?>
+                  <?= substr($category['description'], 0, 100) . '...' ?>
                </p>
                <div class="authorAndDate">
                   <!-- Author and date can be added here if needed -->
