@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once './config/config.php';
 
 $category_id = intval($_GET['id']); // Güvenlik için int'e çevirdik
@@ -65,7 +65,7 @@ $posts = $fizyonomi_stmt->fetchAll(PDO::FETCH_ASSOC);
          <div class="sidebar">
             <div class="area target">
                <h3>Who I Am</h3>
-               <img src="public/img/user/user-2.png" alt="user">
+               <img src="public/img/user/rr.jpg" alt="user">
                <div class="categories">
                   <span>#art</span>
                   <span>#design</span>

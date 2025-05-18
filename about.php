@@ -17,7 +17,7 @@
    <?php include('./includes/header.php'); ?>
 
    <header class="header target">
-      <img src="../public/img/background/about.jpg" alt="background">
+      <img src="../public/img/background/fizyonomi-ne-demek.jpg" alt="background">
       <h1>FİZYONOMİ</h1>
       <h3>kimler fizyonomiyi kullanmıştır</h3>
    </header>
@@ -34,7 +34,7 @@
             </p>
          </div>
          <div class="photo">
-            <img src="../public/img/team/team-1.jpg" alt="">
+            <img src="https://img.superhaber.com/storage/files/images/2023/06/01/talak-suresi-turkce-okunusu-anlami-RafJ_cover.jpg" alt="">
          </div>
       </div>
 
@@ -47,7 +47,7 @@
             </p>
          </div>
          <div class="photo">
-            <img src="../public/img/team/team-2.jpg" alt="">
+            <img src="https://img.aydinlik.com.tr/rcman/Cw800h571q95gc/storage/files/images/2023/01/24/aaaaa-vO51.png" alt="">
          </div>
       </div>
 
@@ -60,7 +60,7 @@
             </p>
          </div>
          <div class="photo">
-            <img src="../public/img/team/team-3.jpg" alt="">
+            <img src="https://i.pinimg.com/originals/ff/b0/eb/ffb0eb06c3c3229c97df050a968e9c54.jpg" alt="">
          </div>
       </div>
       
@@ -72,7 +72,7 @@
             </p>
          </div>
          <div class="photo">
-            <img src="../public/img/team/team-2.jpg" alt="">
+            <img src="https://imgs.stargazete.com/imgsdisk/2024/03/21/bati-disi-ekonomik-kalkin-875_2.jpg" alt="">
          </div>
       </div>
 

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once './config/config.php';
 
 $degisken = $pdo->query("SELECT * FROM categories");  // TÜM ESERLERİ GETİRİYOR
@@ -45,26 +44,6 @@ $categories = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH E
             </div>
             <?php endif; ?>
          <?php endforeach; ?>
-         </div>
-
-         <div class="sidebar">
-            <div class="area target">
-               <h3>Who I Am</h3>
-               <img src="public/img/user/user-2.png" alt="user">
-               <div class="categories">
-                  <span>#art</span>
-                  <span>#design</span>
-                  <span>#paint</span>
-                  <span>#culture</span>
-               </div>
-            </div>
-
-            <div class="area target">
-               <h3>Your Space</h3>
-               <a href="/admin/add">Add Post</a>
-               <a href="#">Your Perfonce</a>
-               <a href="#">Number of Views</a>
-            </div>
          </div>
       </div>
    </div>

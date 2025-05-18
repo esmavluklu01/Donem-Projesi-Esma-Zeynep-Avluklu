@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once './config/config.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
