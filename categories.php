@@ -22,8 +22,8 @@ $categories = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH E
 
    <?php include('./includes/header.php'); ?>
    <header class="header target">
-      <img src="./public/img/background/indir (2).jpg" alt="background">
-      <h1>Kategoriler</h1>
+      <img src="https://i.pinimg.com/736x/5b/a4/d8/5ba4d87fefea09725e3079bd631cdb75.jpg" alt="background">
+      <h1>KATEGORİLER</h1>
    </header>
 
    <div class="home">

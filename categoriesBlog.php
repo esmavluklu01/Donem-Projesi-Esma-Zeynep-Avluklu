@@ -62,27 +62,7 @@ $posts = $fizyonomi_stmt->fetchAll(PDO::FETCH_ASSOC);
          <?php endif; ?>
          </div>
 
-         <div class="sidebar">
-            <div class="area target">
-               <h3>Who I Am</h3>
-               <img src="public/img/user/rr.jpg" alt="user">
-               <div class="categories">
-                  <span>#art</span>
-                  <span>#design</span>
-                  <span>#paint</span>
-                  <span>#culture</span>
-               </div>
-            </div>
-
-            <div class="area target">
-               <h3>Your Space</h3>
-               <a href="/admin/add">Add Post</a>
-               <a href="#">Your Performance</a>
-               <a href="#">Number of Views</a>
-            </div>
-         </div>
-      </div>
-   </div>
+         
 
    <script src="public/js/search.js"></script>
    <script src="public/js/scroll.js"></script>

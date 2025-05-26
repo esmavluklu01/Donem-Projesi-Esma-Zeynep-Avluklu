@@ -1,6 +1,6 @@
 # **Örnek README Dosyası**
 
-## **Proje Başlığı**
+## **Fizyonomi**
 
 Proje Başlığı, projenin açıklaması ve amacıdır.
 

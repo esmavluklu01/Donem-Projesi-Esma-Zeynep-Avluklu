@@ -135,12 +135,21 @@ if ($user_logged_in) {
 <!-- Top Bar with Dropdown -->
 <div class="topbar mb-5">
     <div class="wrapper target">
+        
         <div class="left">
-            <i class="fa-brands fa-square-x-twitter"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-pinterest"></i>
-        </div>
+    
+    <a href="https://instagram.com/fizyonomistemre" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-square-instagram"></i>
+    </a>
+    
+    <a href="https://www.youtube.com/@UzmFizyonomistAhmetBurak" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-youtube"></i>
+    </a>
+    
+    <a href="https://pinterest.com/fizyonomi" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-square-pinterest"></i>
+    </a>
+</div>
         <div class="center">
             <!-- EĞER KULLANICI GİRİŞ YAPTIYSA-->
             <?php if ($user_logged_in): ?>
@@ -150,7 +159,7 @@ if ($user_logged_in) {
             <?php else: ?>
             <!-- EĞER KULLANICI GİRİŞ YAPMADIYSA-->
                 <a href="./index.php">HOME</a>
-                <a href="./categories.php">KATEGORİLER</a>
+                 <a href="./about.php">ABOUT</a>
                 <a href="./login.php">LOGIN</a>
                 <a href="./register.php">REGISTER</a>
             <?php endif; ?>
@@ -159,7 +168,7 @@ if ($user_logged_in) {
             <?php if ($user_logged_in): ?>
                 <div class="dropdown">
                     <!-- User profile image, click to open dropdown -->
-                    <img src="public/img/user/user-1.png" alt="user" class="dropdown-toggle">
+                    <img src="public/img/user/kız.jpg" alt="user" class="dropdown-toggle">
                     
                     <!-- Dropdown menu -->
                     <div class="dropdown-menu">
@@ -171,7 +180,7 @@ if ($user_logged_in) {
                 </div>
             <?php else: ?>
                 <span>
-                    <img src="public/img/user/user-1.png" alt="user">
+                    <img src="public/img/user/kız.jpg" alt="user">
                 </span>
             <?php endif; ?>
         </div>

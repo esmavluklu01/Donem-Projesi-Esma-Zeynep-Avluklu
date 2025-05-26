@@ -19,7 +19,7 @@
    <header class="header target">
       <img src="../public/img/background/fizyonomi-ne-demek.jpg" alt="background">
       <h1>FİZYONOMİ</h1>
-      <h3>kimler fizyonomiyi kullanmıştır</h3>
+      <h3>Kimler Fizyonomiyi Kullanmıştır</h3>
    </header>
 
 

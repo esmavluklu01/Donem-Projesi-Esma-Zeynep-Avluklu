@@ -23,11 +23,20 @@ $categories = $categories_query->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
+
+
+
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="public/css/index.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <title>Document</title>
+
+
+
+
 
    <!-- Slider CSS -->
    <style>
@@ -102,6 +111,11 @@ $categories = $categories_query->fetchAll(PDO::FETCH_ASSOC);
 <body>
    <?php include('./includes/header.php'); ?>
 
+
+
+
+
+
    <header class="header target">
       <!-- Slider Section -->
       <div class="slider">
@@ -110,7 +124,7 @@ $categories = $categories_query->fetchAll(PDO::FETCH_ASSOC);
                <img src="../public/img/background/kapak2.jpg" alt="Slider Image 1">
             </div>
             <div class="fade">
-               <img src="../public/img/background/kapak1.jpg" alt="Slider Image 2">
+               <img src="../public/img/background/kapak3.jpg" alt="Slider Image 2">
             </div>
             <div class="fade">
                <img src="https://us.v-cdn.net/5021068/uploads/editor/27/9p74k4na3mzp.jpg" alt="Slider Image 3">
@@ -119,8 +133,8 @@ $categories = $categories_query->fetchAll(PDO::FETCH_ASSOC);
          <button class="prev">&#10094;</button>
          <button class="next">&#10095;</button>
       </div>
-      <h1>Fizyonomi</h1>
-      <h3>El Yüz Çizgileri Bize Ne Anlatıyor</h3>
+      <h1>FİZYONOMİ</h1>
+      
    </header>
 
    <div class="home">
@@ -139,11 +153,12 @@ $categories = $categories_query->fetchAll(PDO::FETCH_ASSOC);
 
          <div class="sidebar">
             <div class="area target">
-               <h3>Who I Am</h3>
+               <h3>Ben Kimim</h3>
                <img src="public/img/user/rr.jpg" alt="user">
                <?php if ($user_logged_in): ?>
                <div class="user-info">
-                  <h4>Welcome, <?= htmlspecialchars($user['username']) ?></h4>
+               <h3>Dönem projesi  </h3>   
+               <h4>Welcome, <?= htmlspecialchars($user['username']) ?></h4>
                   <p>Email: <?= htmlspecialchars($user['email']) ?></p>
                   <p>Role: <?= htmlspecialchars($user['role']) ?></p>
                </div>
