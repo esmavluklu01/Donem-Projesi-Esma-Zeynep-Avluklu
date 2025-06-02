@@ -25,11 +25,7 @@ Proje Başlığı'na katkı sağlamak isterseniz, aşağıdaki yönergeleri izle
 
 Fizyonomi web sitesi, **(https://github.com/esmavluklu01)** tarafından oluşturulmuştur.
 
-Ek katkı sağlayanlar:
 
-- **[Katkı Sağlayan Kişi Adı](https://github.com/contributor-enesbiroll)**
-
-Projeye katkı sağlayan herkese emekleri ve özverileri için teşekkür ederiz.
 
 
 
