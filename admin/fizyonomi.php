@@ -6,7 +6,7 @@ include('../config/config.php');
 
 session_start();
 
-// Check if user is logged in and get user info
+// Kullanıcının oturum açıp açmadığını kontrol etmek ve kullanıcı bilgilerini almak 
 $user_logged_in = isset($_SESSION['user_id']); 
 
 if ($user_logged_in) {
@@ -19,15 +19,16 @@ if ($user_logged_in) {
 
     // Redirect non-admin users to the home page
     if ($user['role'] !== 'admin') {
-        header("Location: index.php"); // Redirect non-admin users to the homepage
+        header("Location: index.php"); 
+        // Yönetici değilse ana sayfaya yönlendir
         exit();
     }
 } else {
-    // Redirect unauthenticated users to the login page
+    //  Eğer kullanıcı oturum açmamışsa index sayfasına yönlendir
     header("Location: ../index.php");
     exit();
 }
-// Query to fetch fizyonomi records
+// Fizyonomi kayıtlarını getirmek için sorgu
 try {
     $stmt = $pdo->prepare("SELECT * FROM fizyonomi");
     $stmt->execute();
@@ -37,7 +38,7 @@ try {
     exit();
 }
 
-// Handle Create, Update, Delete
+// Oluşturma, Güncelleme ve Silme işlemlerini yönetmek
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Create (Insert) Fizyonomi
     if (isset($_POST['create'])) {
@@ -51,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $isHome = isset($_POST['isHome']) ? 1 : 0;
 
         try {
-            // Insert new fizyonomi record
+            // Yeni bir fizyonomi kaydı ekle
             $stmt = $pdo->prepare("INSERT INTO fizyonomi (user_id, category_id, title, slug, content, status, image, isActive, isHome) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([$user_id, $category_id, $title, $slug, $content, $status, $image, $isActive, $isHome]);
@@ -60,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Update Fizyonomi
+    // güncelleme işlemi
     if (isset($_POST['update']) && isset($_POST['fizyonomiId'])) {
         $fizyonomiId = $_POST['fizyonomiId'];
         $category_id = $_POST['category_id'];
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $isHome = isset($_POST['isHome']) ? 1 : 0;
 
         try {
-            // Update fizyonomi record
+            //  Fizyonomi kaydını güncelle
             $stmt = $pdo->prepare("UPDATE fizyonomi SET category_id = ?, title = ?, slug = ?, content = ?, status = ?, image = ?, isActive = ?, isHome = ? WHERE id = ?");
             $stmt->execute([$category_id, $title, $slug, $content, $status, $image, $isActive, $isHome, $fizyonomiId]);
         } catch (PDOException $e) {

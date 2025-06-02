@@ -11,7 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    // Check if the email or username already exists in the database
+    // E-posta veya kullanıcı adının veritabanında zaten olup olmadığını kontrol et
+
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email OR username = :username");
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -21,10 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user) {
         $error_message = "E-posta veya kullanıcı adı zaten mevcut.";
     } else {
-        // Hash the password before inserting into the database
+        //  Şifreyi veritabanına eklemeden önce hash’le
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
-        // Insert the new user into the database
+        //  Yeni kullanıcıyı veritabanına ekle
         $stmt = $pdo->prepare("INSERT INTO users (email, username, password) VALUES (:email, :username, :password)");
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);

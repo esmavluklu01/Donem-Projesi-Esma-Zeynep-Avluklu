@@ -1,8 +1,7 @@
 <?php
-// Start output buffering to prevent header issues if output already started
+/// Çıkış zaten başlamışsa başlık sorunlarını önlemek için çıkış arabelleğine başlama
 ob_start();
-
-// Ensure no further output before session starts and header is sent
+// Oturum başlamadan ve başlık gönderilmeden önce başka bir çıktı olmadığından emin olun
 include('../config/config.php'); // Veritabanı bağlantısı için
 
 // Check if user is logged in and get user info
@@ -15,18 +14,18 @@ if ($user_logged_in) {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Redirect non-admin users to the home page
+    // "Yönetici olmayan kullanıcıları ana sayfaya yönlendir
     if ($user['role'] !== 'admin') {
         header("Location: index.php"); // Redirect non-admin users to the homepage
         exit();
     }
 } else {
-    // Redirect unauthenticated users to the login page
+    // "Kimliği doğrulanmamış kullanıcıları giriş sayfasına yönlendir
     header("Location: ../index.php");
     exit();
 }
 
-// // Admin Panel CRUD Operations (For example: Display categories and create new ones)
+// // Yönetici panelinde CRUD işlemleri (örneğin: kategorileri görüntüle ve yenilerini oluştur)
 // if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['category_name'])) {
 //     $category_name = $_POST['category_name'];
 
@@ -61,7 +60,7 @@ if ($user_logged_in) {
                 </div>
             </div>     
           </div>
-        <!--   For Toggle Mobile Nav icon -->
+        <!--   "Mobil menü simgesini aç/kapatma işlemi için -->
           <div class="for-mobile d-mobile">
               <div class= "toggle-button" id = "toggle-button">
                 <span class="material-icons">
@@ -70,7 +69,7 @@ if ($user_logged_in) {
               </div>
 
           </div>
-              <!--   For Toggle Mobile Nav Icon -->
+              <!--   "Mobil menü simgesini aç/kapatma işlemi için -->
 
           <div class="collapse navbar-collapse pr-3" id="#">
 

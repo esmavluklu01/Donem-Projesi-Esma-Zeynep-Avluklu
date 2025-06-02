@@ -1,25 +1,25 @@
 <?php
 include('./config/config.php');  // Ensure the connection is included
 
-$error_message = ''; // Initialize error message variable
+$error_message = ''; // Hata mesajı değişkenini başlat
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Prepare the query to check for the user
+    //  Kullanıcıyı kontrol etmek için sorguyu hazırla
     $query = "SELECT * FROM users WHERE email = :email";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
     
-    // Fetch the result
+    // Sonucu al
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // Verify the password
+        // Parolayı doğrula / kontrol et
         if (password_verify($password, $user['password'])) {
-            // Start session on successful login
+            // Başarılı girişte oturumu başlat
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];

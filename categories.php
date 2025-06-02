@@ -1,8 +1,10 @@
 <?php
 require_once './config/config.php';
 
-$degisken = $pdo->query("SELECT * FROM categories");  // TÜM ESERLERİ GETİRİYOR
-$categories = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH EDİP DEĞİŞKENE ATANIYOR
+$degisken = $pdo->query("SELECT * FROM categories");  
+// TÜM KATEGORİLERİ GETİRİYOR
+$categories = $degisken->fetchAll(PDO::FETCH_ASSOC);  
+// kategori bilgilerini FETCH EDİP DEĞİŞKENE ATANIYOR
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +22,9 @@ $categories = $degisken->fetchAll(PDO::FETCH_ASSOC);  // SANAT ESERLERİ FETCH E
 
 <body>
 
-   <?php include('./includes/header.php'); ?>
+   <?php include('./includes/header.php'); ?>  <!--includes klasörü içindeki header.php dosyasını buraya ekle-->
+   
+   
    <header class="header target">
       <img src="https://i.pinimg.com/736x/5b/a4/d8/5ba4d87fefea09725e3079bd631cdb75.jpg" alt="background">
       <h1>KATEGORİLER</h1>

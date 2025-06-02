@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Update User
+    //Kullanıcı bilgilerini güncelle
     if (isset($_POST['update']) && isset($_POST['userId'])) {
         $userId = $_POST['userId'];
         $username = $_POST['username'];
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Delete User
+    //  Kullanıcıyı sil
     if (isset($_POST['delete']) && isset($_POST['userId'])) {
         $userId = $_POST['userId'];
 
@@ -54,7 +54,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
 try {
-    // Exclude users with role 'admin' from the list
+   //admin' rolüne sahip kullanıcıları listeden çıkar
     $stmt = $pdo->prepare("SELECT * FROM users LIMIT :limit OFFSET :offset");
     $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);

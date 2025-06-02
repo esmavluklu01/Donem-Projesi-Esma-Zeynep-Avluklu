@@ -1,7 +1,7 @@
 <?php
 require_once './config/config.php';
 
-// Get user information if logged in
+//  Kullanıcı giriş yapmışsa kullanıcı bilgilerini al
 $user_logged_in = isset($_SESSION['user_id']);
 if ($user_logged_in) {
     $user_id = $_SESSION['user_id'];
@@ -11,11 +11,11 @@ if ($user_logged_in) {
     $user = $stmt_user->fetch(PDO::FETCH_ASSOC);
 }
 
-// Fetch all articles from the "fizyonomi" table
+// ‘fizyonomi’ tablosundaki tüm makaleleri çek
 $degisken = $pdo->query("SELECT * FROM fizyonomi");
 $fizyonomies = $degisken->fetchAll(PDO::FETCH_ASSOC);
 
-// Fetch all categories from the "categories" table
+// categories’ tablosundaki tüm kategorileri çek
 $categories_query = $pdo->query("SELECT * FROM categories");
 $categories = $categories_query->fetchAll(PDO::FETCH_ASSOC);
 ?>

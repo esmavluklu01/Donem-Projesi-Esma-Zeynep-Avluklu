@@ -132,7 +132,7 @@ if ($user_logged_in) {
 </head>
 <body>
 
-<!-- Top Bar with Dropdown -->
+<!-- Dropdown menülü üst çubuk -->
 <div class="topbar mb-5">
     <div class="wrapper target">
         
@@ -153,13 +153,13 @@ if ($user_logged_in) {
         <div class="center">
             <!-- EĞER KULLANICI GİRİŞ YAPTIYSA-->
             <?php if ($user_logged_in): ?>
-                <a href="./index.php">HOME</a>
-                <a href="./about.php">ABOUT</a>
+                <a href="./index.php">ANA SAYFA</a>
+                <a href="./about.php">HAKKINDA</a>
                 <a href="./categories.php">KATEGORİLER</a>
             <?php else: ?>
             <!-- EĞER KULLANICI GİRİŞ YAPMADIYSA-->
-                <a href="./index.php">HOME</a>
-                 <a href="./about.php">ABOUT</a>
+                <a href="./index.php">ANA SAYFA</a>
+                 <a href="./about.php">HAKKINDA</a>
                 <a href="./login.php">LOGIN</a>
                 <a href="./register.php">REGISTER</a>
             <?php endif; ?>

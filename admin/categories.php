@@ -1,10 +1,12 @@
 <?php
-// Include config file to get database connection
+// "Veritabanı bağlantısını almak için yapılandırma (config) dosyasını dahil et
 include('../config/config.php');
 session_start();
-// Query to fetch categories
+
+//Kategorileri getirmek için sorgu
 try {
-    $stmt = $pdo->prepare("SELECT * FROM categories"); // Change "categories" if the table name differs
+    $stmt = $pdo->prepare("SELECT * FROM categories");
+     // Eğer tablo adı farklıysa 'categories' ifadesini değiştirin.
     $stmt->execute();
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -14,7 +16,7 @@ try {
 
 // ekleme işlemi
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Create (Insert) Category
+    // Yeni bir kategori oluştur (ekle)
     if (isset($_POST['create'])) {
         $name = $_POST['name'];
         $description = $_POST['description'];
@@ -30,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Update Category
+    //  Kategoriyi güncelle
     if (isset($_POST['update']) && isset($_POST['categoryId'])) {
         $categoryId = $_POST['categoryId'];
         $name = $_POST['name'];
@@ -47,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Delete Category
+    //Kategoriyi sil
     if (isset($_POST['delete']) && isset($_POST['categoryId'])) {
         $categoryId = $_POST['categoryId'];
 
@@ -59,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // crud işlemlerinden sonra verileri tekrar listeliyor
+    // crud(ekleme,listeleme,güncelleme,silme) işlemlerinden sonra verileri tekrar listeliyor
     try {
         $stmt = $pdo->prepare("SELECT * FROM categories");
         $stmt->execute();

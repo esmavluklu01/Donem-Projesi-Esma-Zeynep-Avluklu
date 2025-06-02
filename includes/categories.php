@@ -2,7 +2,7 @@
             <div class="area target">
                <h3>Categories</h3>
                <?php
-               // Limit the categories to 5
+               // Kategorileri 5 ile sınırla
                $categories_to_display = array_slice($categories, 0, 5);
                foreach ($categories_to_display as $category): ?>
                    <a href="categoriesBlog.php?id=<?= $category['id'] ?>"><?= htmlspecialchars($category['name']) ?></a>
